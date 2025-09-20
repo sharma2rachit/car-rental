@@ -1,11 +1,12 @@
 import { BookCreatedFlagContext } from "@/context/BookCreatedFlagContext";
 import { createBooking, getStoreLocations } from "@/services";
-import { useUser } from "@clerk/nextjs";
+import { useSession } from "next-auth/react";
 import React, { useContext, useEffect, useState } from "react";
 
 function Form({ car }: any) {
   const [storeLocation, setStoreLocation] = useState<any>([]);
   const { showToastMsg, setShowToastMsg } = useContext(BookCreatedFlagContext);
+  const { data: session } = useSession();
   const [formValue, setFormValue] = useState({
     location: "",
     pickUpDate: "",
@@ -13,7 +14,7 @@ function Form({ car }: any) {
     pickUpTime: "",
     dropOffTime: "",
     contactNumber: "",
-    userName: "live Ankit",
+    userName: session?.user?.name || "User",
     carId: "",
   });
 

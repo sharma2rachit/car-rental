@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import CarCard from "../Home/CarCard";
 import Form from "./Form";
-import { useUser } from "@clerk/nextjs";
 
 function BookingModal({ car }: any) {
   return (
