@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Outfit } from 'next/font/google'
-import { SessionProvider } from 'next-auth/react'
+import Providers from '@/components/Providers'
 import NavBar from '@/components/NavBar'
 import AuthProvider from '@/components/AuthProvider'
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider>
+        <Providers>
           <AuthProvider>
             <header className="flex justify-between items-center p-4 gap-4 h-16 border-b">
               <div className="flex items-center">
@@ -32,7 +32,7 @@ export default function RootLayout({
             </header>
             {children}
           </AuthProvider>
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
   )
